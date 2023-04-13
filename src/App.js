@@ -37,7 +37,7 @@ function App() {
   }, [user]);
 
   async function magicLinkLogin() {
-    const { data, error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signInWithOtp({
       email: email,
     });
     if (error) {
@@ -47,7 +47,7 @@ function App() {
     }
   }
   async function signout() {
-    const { error } = await supabase.auth.signOut();
+   await supabase.auth.signOut();
   }
 
   //uploadImage
@@ -129,6 +129,7 @@ function App() {
                 <Col key={CDNURL + user.id + "/" + image.name}>
                   <Card>
                     <Card.Img
+                    style={{height:'250px'}}
                       variant="top"
                       src={CDNURL + user.id + "/" + image.name}
                     />
